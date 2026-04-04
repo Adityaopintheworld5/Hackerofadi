@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackerofadi Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/app.js" defer></script>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #111; color: #eee; margin:0; padding:0; }
+        header { background: #0f0; color:#000; padding: 1rem; text-align:center; font-weight:bold; }
+        main { padding: 1rem; max-width: 900px; margin:auto; }
+        .user-info { margin-bottom: 1rem; }
+        .lessons { display:flex; flex-wrap: wrap; gap:1rem; }
+        .lesson-box { background: #222; padding: 1rem; border-radius:8px; cursor:pointer; transition: 0.2s; width: calc(33% - 1rem); text-align:center; }
+        .lesson-box:hover { background: #0f0; color:#000; }
+        button { margin-top:1rem; padding:0.5rem 1rem; border:none; border-radius:5px; cursor:pointer; background:#0f0; color:#000; font-weight:bold; }
+    </style>
+</head>
+<body>
+
+<header>
+    Hackerofadi Home
+</header>
+
+<main>
+    <div class="user-info">
+        <p>Welcome, <b id="username">User</b>!</p>
+        <p>Points: <span id="points">0</span></p>
+        <p>Badges: <span id="badges">None</span></p>
+        <p>Level: <span id="level">1</span></p>
+    </div>
+
+    <h2>Your Lessons</h2>
+    <div class="lessons" id="lessons">
+        <!-- Lesson links will appear here dynamically -->
+    </div>
+
+    <button onclick="menu()">Back to Dashboard</button>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    // ==== USER INFO ====
+    const currentUser = localStorage.getItem('currentUser');
+    if(!currentUser){
+        alert("Login first");
+        window.location.href = "index.html";
+        return;
+    }
+
+    const user = JSON.parse(localStorage.getItem(currentUser));
+    document.getElementById("username").textContent = currentUser;
+    document.getElementById("points").textContent = user.points;
+    document.getElementById("level").textContent = Math.floor(user.points/50)+1;
+    document.getElementById("badges").textContent = user.badges ? user.badges.join(', ') : "None";
+
+    // ==== LESSON LINKS ====
+    const lessonsData = {
+        python: "Python",
+        htmlcss: "HTML & CSS",
+        javascript: "JavaScript",
+        whitehat: "White Hat",
+        cybersecurity: "Cybersecurity"
+    };
+
+    const container = document.getElementById("lessons");
+    Object.keys(lessonsData).forEach(lang => {
+        const div = document.createElement("div");
+        div.className = "lesson-box";
+        div.textContent = lessonsData[lang];
+        div.onclick = () => window.location.href = `lessons.html?lang=${lang}`;
+        container.appendChild(div);
+    });
+});
+
+// NAVIGATION
+function menu(){
+    window.location.href = "dashboard.html";
+}
+</script>
+
+</body>
+</html>
