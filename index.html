@@ -1,24 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Hackerofadi Lite</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Neon Hacker Style Design</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #0e0e0e;
+            color: #00ffcc;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 10px 20px;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+        header h1 {
+            color: cyan;
+            display: inline;
+        }
+        nav {
+            display: inline;
+            float: right;
+        }
+        nav a {
+            color: #00ffcc;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+        .hero {
+            margin-top: 60px;
+            padding: 50px;
+            text-align: center;
+            background: linear-gradient(90deg, rgba(0,255,204,1) 0%, rgba(0,0,0,1) 100%);
+        }
+        .cta-buttons {
+            margin-top: 20px;
+        }
+        .cta-buttons a {
+            background: cyan;
+            color: black;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        footer {
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
 </head>
 <body>
 
-<h1>Hackerofadi Lite</h1>
+<header>
+    <h1>Hacker's Den</h1>
+    <nav>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
 
-<div id="auth">
-    <h2>Login / Signup</h2>
+<section class="hero">
+    <h2>Welcome to the Neon World</h2>
+    <div class="cta-buttons">
+        <a href="#learn-more">Learn More</a>
+        <a href="#get-started">Get Started</a>
+    </div>
+</section>
 
-    <input type="text" id="username" placeholder="Username">
-    <input type="password" id="password" placeholder="Password">
+<section id="features" class="features">
+    <div>Feature 1</div>
+    <div>Feature 2</div>
+    <div>Feature 3</div>
+    <div>Feature 4</div>
+</section>
 
-    <button onclick="signup()">Signup</button>
-    <button onclick="login()">Login</button>
-</div>
-
-<script src="js/app.js"></script>
+<footer>
+    <p>&copy; 2026 Hacker's Den. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
