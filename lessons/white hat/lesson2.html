@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 2</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>Ethics & Permission</h1>
+
+<p>
+Ethical hacking means you only test systems with permission.
+</p>
+
+<p>
+Without permission = illegal ❌  
+With permission = legal ✅
+</p>
+
+<p>
+Real-life 🌍:
+If you hack a website without permission, it’s a crime.  
+If the company invites you to test, it’s a job.
+</p>
+
+<p>
+Rule: Always ask before testing 🔐
+</p>
+
+<hr>
+
+<div class="code-box">
+Ethical hacking means <span id="slot">???</span> permission
+</div>
+
+<div class="option" onclick="choose('having')">having</div>
+<div class="option" onclick="choose('breaking')">breaking</div>
+<div class="option" onclick="choose('ignoring')">ignoring</div>
+
+<p id="result"></p>
+
+<div class="buttons">
+    <button onclick="prev()">⬅</button>
+    <button onclick="menu()">🏠</button>
+    <button id="nextBtn" onclick="next()" style="display:none;">➡</button>
+</div>
+
+</div>
+
+<script src="../../js/app.js"></script>
+<script>
+initLesson({
+    correct: "having",
+    key: "whitehat-1",
+    next: "lesson3.html",
+    prev: "lesson1.html",
+    menu: "../../lessons.html?lang=whitehat",
+    lang: "whitehat",
+    totalLessons: 5
+});
+</script>
+
+</body>
+</html>

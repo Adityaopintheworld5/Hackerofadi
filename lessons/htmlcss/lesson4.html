@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML/CSS Lesson 4</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+  <p id="progress-text">0% completed</p>
+
+  <p>XP: <span id="xp">0</span></p>
+    <div class="container">
+        <h1>CSS: Basics</h1>
+        <p>CSS is like painting your house. HTML gives the structure, CSS makes it look pretty with colors, sizes, and positions.</p>
+
+        <h2>Example:</h2>
+        <pre>
+&lt;h1 style="color:blue; text-align:center;"&gt;Hello World&lt;/h1&gt;
+&lt;p style="font-size:18px;"&gt;This is my first styled paragraph.&lt;/p&gt;
+        </pre>
+
+        <h2>Try It Yourself:</h2>
+        <p>Create a heading with red color and a paragraph aligned to the center.</p>
+
+        <div class="buttons">
+            <button id="complete-btn">Mark Completed</button>
+            <button id="next-btn">Next Lesson</button>
+            <button id="menu-btn">Back to Menu</button>
+        </div>
+    </div>
+
+    <script>
+    const currentLessonKey = 'htmlcss-3';
+    const currentUser = localStorage.getItem('currentUser');
+    const user = JSON.parse(localStorage.getItem(currentUser));
+
+    document.getElementById('complete-btn').onclick = () => {
+        if(!user.completed.includes(currentLessonKey)){
+            user.points += 10;
+            user.completed.push(currentLessonKey);
+            localStorage.setItem(currentUser, JSON.stringify(user));
+            alert("Lesson Completed! +10 points");
+        } else alert("Lesson already completed");
+    };
+
+    document.getElementById('next-btn').onclick = () => {
+        window.location.href = 'lesson5.html';
+    };
+    document.getElementById('menu-btn').onclick = () => {
+        window.location.href = '../../lessons.html?lang=htmlcss';
+    };
+    </script>
+</body>
+</html>

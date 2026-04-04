@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Lesson 4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<div class="progress-container">
+    <div id="progress-bar" class="progress-bar"></div>
+</div>
+<p id="progress-text"></p>
+<p>XP: <span id="xp"></span></p>
+
+<h1>DOM</h1>
+
+<p>
+DOM lets you control HTML using JS.
+</p>
+
+<div class="code-box">
+document.<span id="slot">???</span>("myId")
+</div>
+
+<h3>Meaning:</h3>
+<p>This finds an element from the page.</p>
+
+<div class="option" onclick="choose('getElementById')">getElementById</div>
+<div class="option" onclick="choose('findId')">findId</div>
+<div class="option" onclick="choose('selectId')">selectId</div>
+
+<p id="result"></p>
+
+<div class="buttons">
+    <button onclick="prev()">⬅</button>
+    <button onclick="menu()">🏠</button>
+    <button id="nextBtn" onclick="next()" style="display:none;">➡</button>
+</div>
+
+</div>
+
+<script src="../../js/app.js"></script>
+<script>
+initLesson({
+    correct: "getElementById",
+    key: "javascript-3",
+    next: "lesson5.html",
+    prev: "lesson3.html",
+    menu: "../../lessons.html?lang=javascript",
+    lang: "javascript",
+    totalLessons: 5
+});
+</script>
+
+</body>
+</html>

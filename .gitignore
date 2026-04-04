@@ -1,0 +1,20 @@
+# Hackerofadi Lite specific
+*.zip
+*.bak# Node / JS / Web stuff
+node_modules/
+*.log
+*.tmp
+*.cache
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Python cache if you have any
+__pycache__/
+*.pyc
+
+# Termux / temp files
+*.bak

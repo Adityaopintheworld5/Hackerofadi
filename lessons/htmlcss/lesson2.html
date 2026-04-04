@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML/CSS Lesson 2</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+</div>
+<p id="progress-text">0% completed</p>
+
+<p>XP: <span id="xp">0</span></p>
+<p>XP: <span id="xp">0</span></p>
+    <div class="container">
+        <h1>HTML: Headings & Paragraphs</h1>
+        <p>Think of headings as titles in a book and paragraphs as the text under each title. Headings <b>h1-h6</b> show importance; paragraphs <b>p</b> show details.</p>
+
+        <h2>Example:</h2>
+        <pre>
+&lt;h1&gt;My Favorite Food&lt;/h1&gt;
+&lt;p&gt;Pizza is my favorite because it is cheesy and tasty.&lt;/p&gt;
+        </pre>
+
+        <h2>Try It Yourself:</h2>
+        <p>Create a heading with your favorite place and a paragraph describing it.</p>
+
+        <div class="buttons">
+            <button id="complete-btn">Mark Completed</button>
+            <button id="next-btn">Next Lesson</button>
+            <button id="menu-btn">Back to Menu</button>
+        </div>
+    </div>
+
+    <script>
+    const currentLessonKey = 'htmlcss-1';
+    const currentUser = localStorage.getItem('currentUser');
+    const user = JSON.parse(localStorage.getItem(currentUser));
+
+    document.getElementById('complete-btn').onclick = () => {
+        if(!user.completed.includes(currentLessonKey)){
+            user.points += 10;
+            user.completed.push(currentLessonKey);
+            localStorage.setItem(currentUser, JSON.stringify(user));
+            alert("Lesson Completed! +10 points");
+        } else alert("Lesson already completed");
+    };
+
+    document.getElementById('next-btn').onclick = () => {
+        window.location.href = 'lesson3.html';
+    };
+    document.getElementById('menu-btn').onclick = () => {
+        window.location.href = '../../lessons.html?lang=htmlcss';
+    };
+    </script>
+</body>
+</html>

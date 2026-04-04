@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lessons</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1 id="page-title">Lessons</h1>
+
+    <div id="lesson-info">
+        <p>User: <span id="username"></span></p>
+        <p>Points: <span id="points">0</span></p>
+    </div>
+
+    <div id="lessons" class="lesson-container"></div>
+</div>
+
+<script src="js/app.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+// ===== USER =====
+const currentUser = localStorage.getItem('currentUser');
+
+if(!currentUser){
+    alert("Login first");
+    window.location.href = "index.html";
+}
+
+const user = JSON.parse(localStorage.getItem(currentUser));
+
+document.getElementById("username").textContent = currentUser;
+document.getElementById("points").textContent = user.points;
+
+// ===== LANGUAGE =====
+const params = new URLSearchParams(window.location.search);
+const lang = params.get("lang");
+
+console.log("LANG =", lang);
+
+// TITLE
+document.getElementById("page-title").textContent =
+    (lang ? lang.toUpperCase() : "No Language") + " Lessons";
+
+// ===== DATA =====
+const lessonsData = {
+    python: ["Variables", "Data Types", "Conditionals", "Loops", "Project"],
+    htmlcss: ["HTML Basics", "Links", "Images", "CSS", "Project"],
+    javascript: ["Variables", "Functions", "Events", "DOM", "Project"],
+
+    cybersecurity: [
+        "What is Cybersecurity",
+        "Types of Hackers",
+        "Phishing Attacks",
+        "Password Security",
+        "Mini Quiz"
+    ],
+
+    whitehat: [
+        "What is White Hat",
+        "Ethical Hacking Rules",
+        "Bug Bounty",
+        "Basic Recon",
+        "Mini Quiz"
+    ]
+};
+
+const container = document.getElementById("lessons");
+
+// ===== RENDER =====
+if(!lang){
+    container.innerHTML = "❌ No language selected";
+}
+else if(!lessonsData[lang]){
+    container.innerHTML = "❌ Invalid language";
+}
+else {
+    lessonsData[lang].forEach((lesson, i) => {
+        const div = document.createElement("div");
+        div.className = "lesson-box";
+        div.textContent = lesson;
+
+        div.onclick = () => {
+            window.location.href = `lessons/${lang}/lesson${i+1}.html`;
+        };
+
+        container.appendChild(div);
+    });
+}
+
+});
+</script>
+</body>
+</html>

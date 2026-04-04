@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Python Lesson 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<!-- Progress -->
+<div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+</div>
+<p id="progress-text"></p>
+<p>XP: <span id="xp"></span></p>
+
+<h1>Variables</h1>
+
+<p>Variables store data like saving a name in your phone.</p>
+
+<div class="code-box">
+name = "<span id="slot">???</span>"  
+print(name)
+</div>
+
+<div class="option" onclick="choose('Adi')">Adi</div>
+<div class="option" onclick="choose('Ado')">Ado</div>
+<div class="option" onclick="choose('123')">123</div>
+
+<p id="result"></p>
+
+<div class="buttons">
+    <button onclick="menu()">🏠</button>
+    <button id="nextBtn" onclick="next()" style="display:none;">➡</button>
+</div>
+
+</div>
+
+<script src="../../js/app.js"></script>
+<script>
+initLesson({
+    correct: "Adi",
+    key: "python-0",
+    next: "lesson2.html",
+    prev: "lesson1.html",
+    menu: "../../lessons.html?lang=python",
+    lang: "python",
+    totalLessons: 5
+});
+</script>
+
+</body>
+</html>

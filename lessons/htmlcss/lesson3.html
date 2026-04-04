@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML/CSS Lesson 3</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+<p id="progress-text">0% completed</p>
+
+<p>XP: <span id="xp">0</span></p>
+    <div class="container">
+        <h1>HTML: Lists & Links</h1>
+        <p>Lists are like grocery lists; links are directions to other pages.</p>
+
+        <h2>Example:</h2>
+        <pre>
+&lt;ul&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+  &lt;li&gt;Bread&lt;/li&gt;
+  &lt;li&gt;Eggs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a href="https://example.com"&gt;Visit Example&lt;/a&gt;
+        </pre>
+
+        <h2>Try It Yourself:</h2>
+        <p>Make a list of your 3 favorite games and link one of them to a website.</p>
+
+        <div class="buttons">
+            <button id="complete-btn">Mark Completed</button>
+            <button id="next-btn">Next Lesson</button>
+            <button id="menu-btn">Back to Menu</button>
+        </div>
+    </div>
+
+    <script>
+    const currentLessonKey = 'htmlcss-2';
+    const currentUser = localStorage.getItem('currentUser');
+    const user = JSON.parse(localStorage.getItem(currentUser));
+
+    document.getElementById('complete-btn').onclick = () => {
+        if(!user.completed.includes(currentLessonKey)){
+            user.points += 10;
+            user.completed.push(currentLessonKey);
+            localStorage.setItem(currentUser, JSON.stringify(user));
+            alert("Lesson Completed! +10 points");
+        } else alert("Lesson already completed");
+    };
+
+    document.getElementById('next-btn').onclick = () => {
+        window.location.href = 'lesson4.html';
+    };
+    document.getElementById('menu-btn').onclick = () => {
+        window.location.href = '../../lessons.html?lang=htmlcss';
+    };
+    </script>
+</body>
+</html>

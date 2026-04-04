@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML/CSS Lesson 5</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+  </div>
+<p id="progress-text">0% completed</p>
+
+<p>XP: <span id="xp">0</span></p>
+    <div class="container">
+        <h1>HTML/CSS Mini Project: Personal Card</h1>
+        <p>Create a simple personal card with your name, hobby, and favorite color using HTML and CSS.</p>
+
+        <h2>Example:</h2>
+        <pre>
+&lt;div style="border:1px solid black; padding:10px; width:200px;"&gt;
+  &lt;h2&gt;Aditya&lt;/h2&gt;
+  &lt;p&gt;Hobby: Coding&lt;/p&gt;
+  &lt;p&gt;Favorite Color: Blue&lt;/p&gt;
+&lt;/div&gt;
+        </pre>
+
+        <h2>Try It Yourself:</h2>
+        <p>Create your own card with at least 3 details.</p>
+
+        <div class="buttons">
+            <button id="complete-btn">Mark Completed</button>
+            <button id="menu-btn">Back to Menu</button>
+        </div>
+    </div>
+
+    <script>
+    const currentLessonKey = 'htmlcss-4';
+    const currentUser = localStorage.getItem('currentUser');
+    const user = JSON.parse(localStorage.getItem(currentUser));
+
+    document.getElementById('complete-btn').onclick = () => {
+        if(!user.completed.includes(currentLessonKey)){
+            user.points += 10;
+            user.completed.push(currentLessonKey);
+            localStorage.setItem(currentUser, JSON.stringify(user));
+            alert("Lesson Completed! +10 points");
+        } else alert("Lesson already completed");
+    };
+
+    document.getElementById('menu-btn').onclick = () => {
+        window.location.href = '../../lessons.html?lang=htmlcss';
+    };
+    </script>
+</body>
+</html>

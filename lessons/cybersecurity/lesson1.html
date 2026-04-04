@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cybersecurity Lesson 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+</div>
+<p id="progress-text">0% completed</p>
+
+<p>XP: <span id="xp">0</span></p>
+<div class="container">
+
+<h1>What is Cybersecurity?</h1>
+
+<p>Cybersecurity means protecting computers, phones, and websites from hackers.</p>
+
+<p>Think of your phone like a locker 🔐. Inside it you store photos, chats, passwords, and personal data.</p>
+
+<p>If someone breaks into it, they can:
+- steal your data  
+- access your social accounts  
+- even take money from your bank apps  
+</p>
+
+<p>Cybersecurity works like:
+- 🔒 locks (passwords)
+- 🛡️ guards (security systems)
+- 🚨 alarms (alerts when something is wrong)
+</p>
+
+<p>Real-life example 🌍:  
+Using "123456" as password is like leaving your door open.</p>
+
+<p>Big companies spend millions to protect their systems.</p>
+
+<hr>
+
+<h3>Quick Check 🧠</h3>
+
+<div class="code-box">
+Cybersecurity protects your <span id="slot">???</span>
+</div>
+
+<div class="option" onclick="choose('data')">data</div>
+<div class="option" onclick="choose('games')">games</div>
+<div class="option" onclick="choose('music')">music</div>
+
+<p id="result"></p>
+
+<div class="buttons">
+    <button onclick="menu()">🏠</button>
+    <button id="nextBtn" onclick="next()" style="display:none;">➡</button>
+</div>
+
+</div>
+
+<script src="../../js/app.js"></script>
+<script>
+initLesson({
+    correct: "data",
+    key: "cybersecurity-0",
+    next: "lesson2.html",
+    prev: "lesson1.html",
+    menu: "../../lessons.html?lang=cybersecurity",
+    lang: "cybersecurity",
+    totalLessons: 5
+});
+</script>
+
+</body>
+</html>

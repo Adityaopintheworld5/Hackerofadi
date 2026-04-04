@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Lesson 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<!-- Progress -->
+<div class="progress-container">
+    <div id="progress-bar" class="progress-bar"></div>
+</div>
+<p id="progress-text"></p>
+<p>XP: <span id="xp"></span></p>
+
+<h1>JavaScript Variables</h1>
+
+<p>
+A variable stores data. Think of it like a labeled box 📦.
+You put something inside, and use the label to access it.
+</p>
+
+<div class="code-box">
+let name = "<span id="slot">???</span>";
+</div>
+
+<h3>What does this do?</h3>
+<p>
+It creates a variable called <b>name</b> and stores a value inside it.
+</p>
+
+<div class="option" onclick="choose('Adi')">Adi</div>
+<div class="option" onclick="choose('123')">123</div>
+<div class="option" onclick="choose('true')">true</div>
+
+<p id="result"></p>
+
+<div class="buttons">
+    <button onclick="menu()">🏠</button>
+    <button id="nextBtn" onclick="next()" style="display:none;">➡</button>
+</div>
+
+</div>
+
+<script src="../../js/app.js"></script>
+<script>
+initLesson({
+    correct: "Adi",
+    key: "javascript-0",
+    next: "lesson2.html",
+    prev: "lesson1.html",
+    menu: "../../lessons.html?lang=javascript",
+    lang: "javascript",
+    totalLessons: 5
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 4</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>Recon (Information Gathering)</h1>
+
+<p>
+Recon means collecting information before testing a system.
+</p>
+
+<p>
+Hackers don’t attack blindly.  
+They first study the target.
+</p>
+
+<p>
+They look for:
+- website structure  
+- public data  
+- possible weak points  
+</p>
+
+<p>
+Real-life 🌍:
+Before hacking a website, a hacker learns how it works.
+</p>
+
+<p>
+This step is important for both attackers and defenders.
+</p>
+
+<hr>
+
+<div class="code-box">
+Recon means collecting <span id="slot">???</span>
+</div>
+
+<div class="option" onclick="choose('information')">information</div>
+<div class="option" onclick="choose('passwords')">passwords</div>
+<div class="option" onclick="choose('music')">music</div>
+
+<p id="result"></p>
+
+<div class="buttons">
+    <button onclick="prev()">⬅</button>
+    <button onclick="menu()">🏠</button>
+    <button id="nextBtn" onclick="next()" style="display:none;">➡</button>
+</div>
+
+</div>
+
+<script src="../../js/app.js"></script>
+<script>
+initLesson({
+    correct: "information",
+    key: "whitehat-3",
+    next: "lesson5.html",
+    prev: "lesson3.html",
+    menu: "../../lessons.html?lang=whitehat",
+    lang: "whitehat",
+    totalLessons: 5
+});
+</script>
+
+</body>
+</html>

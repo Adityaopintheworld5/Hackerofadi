@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 4</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+<div class="progress-container">
+    <div class="progress-bar" id="progress-bar"></div>
+</div>
+<p id="progress-text">0% completed</p>
+
+<p>XP: <span id="xp">0</span></p>
+<div class="container">
+
+<h1>Password Security</h1>
+
+<p>Passwords protect your accounts.</p>
+
+<p>Weak:
+123456, password, adi</p>
+
+<p>Strong:
+Mix of letters, numbers, symbols</p>
+
+<p>Example: P@ss#91X!</p>
+
+<p>Hackers use tools to guess passwords quickly.</p>
+
+<hr>
+
+<div class="code-box">
+Strong password example: <span id="slot">???</span>
+</div>
+
+<div class="option" onclick="choose('123456')">123456</div>
+<div class="option" onclick="choose('P@ss#91X!')">P@ss#91X!</div>
+<div class="option" onclick="choose('adi')">adi</div>
+
+<p id="result"></p>
+
+<div class="buttons">
+    <button onclick="prev()">⬅</button>
+    <button onclick="menu()">🏠</button>
+    <button id="nextBtn" onclick="next()" style="display:none;">➡</button>
+</div>
+
+</div>
+
+<script src="../../js/app.js"></script>
+<script>
+initLesson({
+    correct: "P@ss#91X!",
+    key: "cybersecurity-3",
+    next: "lesson5.html",
+    prev: "lesson3.html",
+    menu: "../../lessons.html?lang=cybersecurity",
+    lang: "cybersecurity",
+    totalLessons: 5
+});
+</script>
+
+</body>
+</html>

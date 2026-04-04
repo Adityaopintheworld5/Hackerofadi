@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lesson 5</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>White Hat Mindset</h1>
+
+<p>
+Being a white hat is not just about skills. It’s about mindset.
+</p>
+
+<p>
+You must:
+- follow rules  
+- respect privacy  
+- use skills responsibly  
+</p>
+
+<p>
+Real hackers:
+- don’t show off  
+- don’t harm users  
+- protect systems  
+</p>
+
+<p>
+You are building trust, not breaking it.
+</p>
+
+<hr>
+
+<div class="code-box">
+White hats follow <span id="slot">???</span>
+</div>
+
+<div class="option" onclick="choose('rules')">rules</div>
+<div class="option" onclick="choose('crime')">crime</div>
+<div class="option" onclick="choose('chaos')">chaos</div>
+
+<p id="result"></p>
+
+<div class="buttons">
+    <button onclick="prev()">⬅</button>
+    <button onclick="menu()">🏠</button>
+</div>
+
+</div>
+
+<script src="../../js/app.js"></script>
+<script>
+initLesson({
+    correct: "rules",
+    key: "whitehat-4",
+    prev: "lesson4.html",
+    menu: "../../lessons.html?lang=whitehat",
+    lang: "whitehat",
+    totalLessons: 5
+});
+</script>
+
+</body>
+</html>

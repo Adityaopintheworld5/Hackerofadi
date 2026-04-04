@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>Dashboard</h1>
+
+<div class="user-card">
+    <p><b>User:</b> <span id="username"></span></p>
+    <p><b>Points:</b> <span id="points">0</span></p>
+    <p><b>Level:</b> <span id="level">1</span></p>
+    <p><b>Badges:</b> <span id="badges">None</span></p>
+</div>
+
+<h2>Languages</h2>
+<div class="languages">
+    <div class="lang-box" onclick="goLessons('python')">Python</div>
+    <div class="lang-box" onclick="goLessons('htmlcss')">HTML/CSS</div>
+    <div class="lang-box" onclick="goLessons('javascript')">JavaScript</div>
+    <div class="lang-box" onclick="goLessons('cybersecurity')">Cybersecurity</div>
+    <div class="lang-box" onclick="goLessons('whitehat')">White Hat</div>
+</div>
+
+<h2>🏆 Active Users</h2>
+<div id="leaderboard"></div>
+
+</div>
+
+<script src="js/app.js"></script>
+<script>
+// ===== USER LOAD =====
+const currentUser = localStorage.getItem('currentUser');
+
+if(!currentUser){
+    alert("Login first");
+    window.location.href = "index.html";
+}
+
+const user = JSON.parse(localStorage.getItem(currentUser));
+
+// USER INFO
+document.getElementById("username").textContent = currentUser;
+document.getElementById("points").textContent = user.points;
+
+// LEVEL
+const level = Math.floor(user.points / 50) + 1;
+document.getElementById("level").textContent = level;
+
+// ===== BADGES =====
+const badges = user.badges || [];
+
+document.getElementById("badges").textContent =
+    badges.length ? badges.join(', ') : "None";
+
+
+// ===== LEADERBOARD =====
+const leaderboard = document.getElementById("leaderboard");
+
+let users = [];
+
+// GET ALL USERS
+for(let i = 0; i < localStorage.length; i++){
+    const key = localStorage.key(i);
+
+    if(key !== "currentUser"){
+        try {
+            const data = JSON.parse(localStorage.getItem(key));
+
+            if(data && data.points !== undefined){
+                users.push({
+                    name: key,
+                    points: data.points,
+                    completed: data.completed || []
+                });
+            }
+        } catch(e){
+            // ignore non-user data
+        }
+    }
+}
+
+// SORT BY POINTS
+users.sort((a,b) => b.points - a.points);
+
+// RENDER
+users.forEach((u, index) => {
+    const div = document.createElement("div");
+    div.className = "user-box";
+
+    let achievement = "Beginner";
+    if(u.points > 50) achievement = "Intermediate";
+    if(u.points > 150) achievement = "Pro";
+
+    div.innerHTML = `
+        <b>#${index+1}</b> ${u.name}<br>
+        ⭐ ${u.points} pts<br>
+        🏆 ${achievement}
+    `;
+
+    leaderboard.appendChild(div);
+});
+</script>
+
+
+</body>
+</html>

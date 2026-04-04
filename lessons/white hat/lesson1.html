@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>White Hat Lesson 1</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>What is White Hat?</h1>
+
+<p>
+White hat hackers are ethical hackers who help protect systems instead of breaking them.
+</p>
+
+<p>
+They have the same skills as hackers, but they use them for good.
+</p>
+
+<p>
+Think of them as:
+- Digital police 👮  
+- Security testers 🛡️  
+</p>
+
+<p>
+Real-life 🌍:
+Companies hire white hats to find bugs before criminals do.
+</p>
+
+<p>
+They don’t steal data.  
+They report problems and help fix them.
+</p>
+
+<hr>
+
+<div class="code-box">
+White hat hackers help improve <span id="slot">???</span>
+</div>
+
+<div class="option" onclick="choose('security')">security</div>
+<div class="option" onclick="choose('crime')">crime</div>
+<div class="option" onclick="choose('chaos')">chaos</div>
+
+<p id="result"></p>
+
+<div class="buttons">
+    <button onclick="menu()">🏠</button>
+    <button id="nextBtn" onclick="next()" style="display:none;">➡</button>
+</div>
+
+</div>
+
+<script src="../../js/app.js"></script>
+<script>
+initLesson({
+    correct: "security",
+    key: "whitehat-0",
+    next: "lesson2.html",
+    prev: "lesson1.html",
+    menu: "../../lessons.html?lang=whitehat",
+    lang: "whitehat",
+    totalLessons: 5
+});
+</script>
+
+</body>
+</html>
