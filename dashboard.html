@@ -2,120 +2,244 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Hackerofadi Dashboard</title>
+<title>Hackerofadi HUD</title>
 <link rel="stylesheet" href="css/style.css">
 <style>
-/* ===== DASHBOARD IMPROVEMENTS ===== */
-body { background:#111; color:#0f0; font-family: monospace; margin:0; padding:0; }
-.container { width:90%; max-width:1000px; margin:20px auto; }
+/* =========================
+   HACKEROFADI FULL HUD
+   ========================= */
+body{
+    margin:0;
+    padding:0;
+    background:#0a0a0a;
+    color:#0f0;
+    font-family: monospace;
+}
+.container{
+    display:grid;
+    grid-template-columns:1fr 2fr;
+    gap:20px;
+    width:95%;
+    max-width:1200px;
+    margin:20px auto;
+}
 
-h1, h2 { color:#0ff; text-shadow:0 0 8px #0ff; }
-h2 { margin-top:30px; }
+/* USER CARD */
+.user-card{
+    background:#111;
+    padding:20px;
+    border-left:4px solid #0f0;
+    border-radius:6px;
+    box-shadow:0 0 15px #0f0;
+}
+.user-card p{margin:8px 0;}
+.user-card h2{text-shadow:0 0 8px #0ff;}
 
-.user-card { background:#222; padding:15px; border-left:4px solid #0f0; border-radius:5px; margin-bottom:20px; box-shadow:0 0 10px #0ff; }
-.user-card p { margin:5px 0; }
+/* LANGUAGES */
+.languages{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:10px;
+}
+.lang-box{
+    flex:1 1 120px;
+    padding:12px;
+    text-align:center;
+    background:#111;
+    cursor:pointer;
+    border-left:4px solid #0f0;
+    border-radius:5px;
+    transition:all 0.2s;
+    box-shadow:0 0 8px #0f0;
+}
+.lang-box:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 15px #0ff;
+}
 
-.languages { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
-.lang-box { flex:1 1 120px; padding:10px; text-align:center; background:#222; cursor:pointer; border-left:4px solid #0f0; border-radius:5px; transition: all 0.2s; }
-.lang-box:hover { box-shadow:0 0 10px #0ff; transform:scale(1.05); }
+/* LEADERBOARD */
+#leaderboard{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-top:20px;
+}
+.user-box{
+    display:flex;
+    justify-content:space-between;
+    background:#111;
+    padding:10px;
+    border-left:4px solid #ff0;
+    border-radius:5px;
+    box-shadow:0 0 10px #ff0;
+    transition:all 0.2s;
+}
+.user-box:hover{
+    transform:scale(1.02);
+    box-shadow:0 0 15px #f0f;
+}
 
-#leaderboard { display:flex; flex-wrap:wrap; gap:10px; margin-top:10px; }
-.user-box { background:#222; padding:10px; border-left:4px solid #ff0; border-radius:5px; flex:1 1 150px; text-align:center; box-shadow:0 0 8px #ff0; transition: all 0.2s; }
-.user-box:hover { box-shadow:0 0 12px #f0f; transform:scale(1.02); }
+/* TODO TRACKER */
+#todo-tracker{
+    background:#111;
+    padding:15px;
+    border-left:4px solid #f0f;
+    border-radius:6px;
+    box-shadow:0 0 15px #f0f;
+    max-height:600px;
+    overflow-y:auto;
+}
+#todo-tracker h2{color:#f0f; text-shadow:0 0 8px #f0f;}
+#todo-tracker input, #todo-tracker select, #todo-tracker button{
+    width:100%;
+    margin:5px 0;
+    padding:10px;
+    border:none;
+    border-radius:5px;
+    font-family:monospace;
+    background:#111;
+    color:#0f0;
+    box-shadow:0 0 5px #0f0 inset;
+    transition:all 0.2s;
+}
+#todo-tracker input:focus,
+#todo-tracker select:focus,
+#todo-tracker button:hover{
+    box-shadow:0 0 10px #0ff inset;
+    outline:none;
+}
+#task-list li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:8px;
+    margin:5px 0;
+    background:#111;
+    border-left:3px solid #0ff;
+    cursor:pointer;
+    transition:all 0.2s;
+}
+#task-list li.done{
+    text-decoration:line-through;
+    opacity:0.6;
+    border-color:#0f0;
+}
+#task-list li:hover{
+    transform:scale(1.02);
+    box-shadow:0 0 10px #0ff;
+}
+.deadline{
+    font-size:12px;
+    color:#ff0;
+    margin-left:10px;
+}
 
-/* ===== TODO TRACKER CONTAINER ===== */
-#todo-tracker { margin-top:30px; }
+/* PROGRESS BAR */
+.progress-container{
+    width:100%;
+    background:#222;
+    border-radius:5px;
+    overflow:hidden;
+    margin:10px 0;
+}
+.progress-bar{
+    height:15px;
+    width:0;
+    background:#0f0;
+    transition:width 0.5s;
+}
 
+/* COMPLETION POPUP */
+.completion-popup{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#0ff;
+    color:#111;
+    padding:10px 15px;
+    border-radius:5px;
+    box-shadow:0 0 15px #0ff;
+    font-family:monospace;
+    font-weight:bold;
+    z-index:9999;
+    animation:popup-fade 2.5s ease forwards;
+}
+@keyframes popup-fade{
+    0%{opacity:0; transform:translateY(-20px);}
+    10%{opacity:1; transform:translateY(0);}
+    90%{opacity:1; transform:translateY(0);}
+    100%{opacity:0; transform:translateY(-20px);}
+}
 </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- LEFT: USER + LEADERBOARD + LANGUAGES -->
+    <div>
+        <div class="user-card">
+            <h2>User Info</h2>
+            <p><b>Username:</b> <span id="username"></span></p>
+            <p><b>Points:</b> <span id="xp">0</span></p>
+            <p><b>Level:</b> <span id="level">1</span></p>
+            <p><b>Badges:</b> <span id="badges">None</span></p>
+            <p><b>Streak:</b> <span id="streak">0</span> 🔥</p>
+        </div>
 
-  <h1>💻 Hackerofadi Dashboard</h1>
+        <h2>Languages</h2>
+        <div class="languages">
+            <div class="lang-box" onclick="goLessons('python')">Python</div>
+            <div class="lang-box" onclick="goLessons('htmlcss')">HTML/CSS</div>
+            <div class="lang-box" onclick="goLessons('javascript')">JavaScript</div>
+            <div class="lang-box" onclick="goLessons('cybersecurity')">Cybersecurity</div>
+            <div class="lang-box" onclick="goLessons('whitehat')">White Hat</div>
+        </div>
 
-  <!-- USER INFO -->
-  <div class="user-card">
-      <p><b>User:</b> <span id="username"></span></p>
-      <p><b>Points:</b> <span id="points">0</span></p>
-      <p><b>Level:</b> <span id="level">1</span></p>
-      <p><b>Badges:</b> <span id="badges">None</span></p>
-  </div>
+        <h2>Leaderboard</h2>
+        <div id="leaderboard"></div>
+    </div>
 
-  <!-- LANGUAGES -->
-  <h2>🖥️ Languages</h2>
-  <div class="languages">
-      <div class="lang-box" onclick="goLessons('python')">Python</div>
-      <div class="lang-box" onclick="goLessons('htmlcss')">HTML/CSS</div>
-      <div class="lang-box" onclick="goLessons('javascript')">JavaScript</div>
-      <div class="lang-box" onclick="goLessons('cybersecurity')">Cybersecurity</div>
-      <div class="lang-box" onclick="goLessons('whitehat')">White Hat</div>
-  </div>
-
-  <!-- LEADERBOARD -->
-  <h2>🏆 Active Users</h2>
-  <div id="leaderboard"></div>
-
-  <!-- TODO TRACKER -->
-  <div id="todo-tracker"></div>
-
+    <!-- RIGHT: TODO TRACKER -->
+    <div id="todo-tracker"></div>
 </div>
 
 <script src="js/app.js"></script>
-<script src="js/todo.js"></script>
 <script>
 // ===== USER LOAD =====
-const currentUser = localStorage.getItem('currentUser');
 if(!currentUser){
     alert("Login first");
-    window.location.href = "index.html";
+    window.location.href="index.html";
 }
 
-const user = JSON.parse(localStorage.getItem(currentUser));
-
-// USER INFO
-document.getElementById("username").textContent = currentUser;
-document.getElementById("points").textContent = user.points;
-
-// LEVEL
-const level = Math.floor(user.points / 50) + 1;
-document.getElementById("level").textContent = level;
-
-// ===== BADGES =====
-const badges = user.badges || [];
-document.getElementById("badges").textContent = badges.length ? badges.join(', ') : "None";
+document.getElementById("username").textContent=currentUser;
+document.getElementById("xp").textContent=user.points;
+document.getElementById("level").textContent=Math.floor(user.points/50)+1;
+document.getElementById("badges").textContent=user.badges.length? user.badges.join(', ') : "None";
+document.getElementById("streak").textContent=user.streak;
 
 // ===== LEADERBOARD =====
-const leaderboard = document.getElementById("leaderboard");
-
-let users = [];
-for(let i = 0; i < localStorage.length; i++){
-    const key = localStorage.key(i);
-    if(key !== "currentUser"){
-        try {
-            const data = JSON.parse(localStorage.getItem(key));
-            if(data && data.points !== undefined){
-                users.push({ name: key, points: data.points, completed: data.completed || [] });
-            }
-        } catch(e){ }
+const leaderboard=document.getElementById("leaderboard");
+let users=[];
+for(let i=0;i<localStorage.length;i++){
+    const key=localStorage.key(i);
+    if(key!=="currentUser"){
+        try{
+            const data=JSON.parse(localStorage.getItem(key));
+            if(data && data.points!==undefined) users.push({name:key, points:data.points});
+        }catch(e){}
     }
 }
-
-users.sort((a,b) => b.points - a.points);
-
-users.forEach((u, index) => {
-    const div = document.createElement("div");
-    div.className = "user-box";
-    let achievement = "Beginner";
-    if(u.points > 50) achievement = "Intermediate";
-    if(u.points > 150) achievement = "Pro";
-    div.innerHTML = `
-        <b>#${index+1}</b> ${u.name}<br>
-        ⭐ ${u.points} pts<br>
-        🏆 ${achievement}
-    `;
+users.sort((a,b)=>b.points-a.points);
+users.forEach((u,index)=>{
+    const div=document.createElement("div");
+    div.className="user-box";
+    div.innerHTML=`<span>#${index+1} ${u.name}</span><span>⭐ ${u.points}</span>`;
     leaderboard.appendChild(div);
 });
+
+// ===== TODO TRACKER INIT =====
+initTodoTracker();
 </script>
 
 </body>
