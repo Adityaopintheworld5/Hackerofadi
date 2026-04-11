@@ -9,12 +9,9 @@ body {
 
 /* --- Main Container --- */
 .container {
-    max-width: 600px;
-    margin: 40px auto;
-    background: #1e1e1e;
-    padding: 25px 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.7);
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 15px 20px;
 }
 
 /* --- Headings --- */
@@ -73,20 +70,21 @@ h2 {
 }
 
 .lesson-box {
-    padding: 25px;                /* Bigger click area */
-    background: #ff9500;          /* Neon orange */
-    border-radius: 12px;          /* Smooth corners */
+    padding: 15px;               /* Reduced from 25 */
+    background: #ff9500;
+    border-radius: 10px;
     cursor: pointer;
     text-align: center;
     font-weight: bold;
-    font-size: 18px;              /* Bigger text */
-    box-shadow: 0 0 12px #ff9500;
-    transition: all 0.3s;
+    font-size: 16px;             /* Slightly smaller */
+    box-shadow: 0 0 8px #ff9500; /* Softer glow */
+    transition: 0.2s;
     color: #000;
-    width: 100%;                  /* Full container width */
-    max-width: 500px;             /* Optional max width */
-    margin: 0 auto;               /* Center horizontally */
+    width: 100%;
+    max-width: 400px;            /* Reduced */
+    margin: 10px auto;           /* Adds spacing between boxes */
 }
+
 
 .lesson-box:hover {
     background: #ffaa33;
