@@ -1,4 +1,11 @@
 /* --- General Body --- */
+.profile-img {
+    width: 280px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid #00ff9f; /* hacker vibe 🔥 */
+}
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #121212;
